@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './componentes/Navbar' ;
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemListContainer from './componentes/ItemListContainer';
+import ItemDetailContainer from './componentes/ItemDetailContainer'; 
+import {Route, Switch, BrowserRouter} from 'react-router-dom' ;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <BrowserRouter>
+      <NavBar/>
+   <Switch>
+   <Route exact path="/">
+      <ItemListContainer />
+   </Route>
+   <Route path="/categoria/:categoria">
+      <ItemListContainer />
+   </Route>
+   <Route path="/item/:id">
+      <ItemDetailContainer/>
+   </Route>
+   <Route patch="*"> <div className="p-3"> Hubo un error! - No existe la pagina</div></Route>
+   </Switch>
+   </BrowserRouter>
+  </>
   );
 }
 
