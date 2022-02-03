@@ -1,36 +1,41 @@
-import ItemDetail from './ItemDetail';
-import productos from '../productos/productos' ;
-import {useState, useEffect} from 'react' ;
-import {useParams} from 'react-router-dom' ;
-import { Spinner } from 'react-bootstrap';
+
+import ItemList from './ItemList' ;
+import productos from '../productos/productos';
+import { useState, useEffect } from 'react';
+import {Spinner} from 'react-bootstrap' ;
+import {useParams} from 'react-router-dom' 
+
+const ItemListContainer = () => {
+
+    const {categoria} = useParams();
+    const [arrayProductos, setArrayProductos] = useState([]) ;
+    const [loading, setLoading] = useState (<Spinner animation="border" variant="primary"/>) ;
 
 
-const ItemDetailContainer = () => {
-
-    const [arrayDeProductos, setArrayDeProductos] = useState ([]) ;
-    const [terminolapromesa, setTerminoLaPromesa] = useState (false) ;
-
-    const {id} = useParams() ;
-
-    useEffect(() => {
-
-    const promesa = new Promise ((resolve) => 
-        {
+    const promesa = new Promise ((resolve) => {
         setTimeout(() => {
         resolve (productos)
-        }, 1000);
-}) ;
+        }, 2000);
 
-    promesa.then(res => {
-        setArrayDeProductos (res[id]) ; // Mando un producto en concreto
-        setTerminoLaPromesa (true) ;
     })
-}, [])
 
-if (terminolapromesa == true) {
-    return ( <>
-             <ItemDetail producto={arrayDeProductos}/> 
-             </>) }  else  return ( <div className="w-25 mt-2 text-center m-auto"><Spinner animation="border" variant="primary"/></div>);
-} ;
+    useEffect (() =>  {
 
-export default ItemDetailContainer ;
+        promesa.then(res => {
+            setArrayProductos (res)
+            console.log(categoria)
+            if (categoria !== undefined) {setArrayProductos (res.filter(producto => producto.categoria === categoria) ) } ;
+            console.log(arrayProductos);
+            setLoading ("") ;
+        })
+
+    },[categoria])
+
+    return ( 
+        <>
+        <div className="w-25 mt-2 text-center m-auto"> {loading}</div>
+        <br/>
+        <ItemList items={arrayProductos}/>
+        </> )
+}
+export default ItemListContainer ;

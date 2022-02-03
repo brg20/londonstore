@@ -1,20 +1,22 @@
 import react, {useState} from 'react' ;
 import { Button } from 'react-bootstrap';
 
-const ItemCount = ({stock,cantidadInicial}) => { 
+
+const ItemCount = ({stock,cantidadInicial,controlStock}) => { 
 
 const [cantidad, setCantidad]= useState (cantidadInicial) ;
 
 const sumarCantidad = () => {
     (cantidad < stock) ? setCantidad  (parseInt(cantidad ) + 1) : alert("No hay tanto stock disponible");
 }
-
 const restarCantidad = () => {
     (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : alert ("Al menos debe haber 1 producto") ;
 }
 
 const onAdd = () => {
     alert (`Se han agregado ${cantidad} producto/s al carrito`)
+    controlStock(cantidad);
+
 }
     return  (
         <>  
@@ -27,5 +29,4 @@ const onAdd = () => {
             </div>
     
         </> )} ;
-
 export default ItemCount ;
