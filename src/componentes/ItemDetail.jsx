@@ -1,14 +1,18 @@
 import {Card, Container} from 'react-bootstrap' ;
 import ItemCount from './ItemCount' ;
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import {Context}  from './CartContext';
 
 const ItemDetail = ({producto}) => {
 
+    const {agregarCarrito} = useContext (Context) ;
     const [mostrarItemCount, setMostrarItemCount] = useState (true)
-    const controlStock = (cantidad) => {
-        alert (`se esta haciendo el control... la cantidad es ${cantidad} `)
+
+    const onAdd = (cantidad) => {
+        alert (`Se van a descontar ${cantidad} producto/s`)
         setMostrarItemCount (false);
-    }
+        agregarCarrito(producto,cantidad);
+            }
 
     return (
             <>
@@ -21,8 +25,8 @@ const ItemDetail = ({producto}) => {
                 <Card.Text>{producto.descripcion}</Card.Text>
              </Card.Body>
              </Card>
-             { (mostrarItemCount == true) ?
-             <ItemCount stock={producto.stock} cantidadInicial="1" controlStock={controlStock}/> 
+             { (mostrarItemCount === true) ?
+             <ItemCount stock={producto.stock} cantidadInicial='1' onAdd={onAdd}/> 
              : <div></div>
              }</div>
              </>)
