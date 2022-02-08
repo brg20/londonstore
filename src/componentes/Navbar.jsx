@@ -15,7 +15,7 @@ function NavBar ()  {
     <Link className="nav-link" to={'/categoria/Abrigos'}>Abrigos</Link>
     <Link className="nav-link" to={'/categoria/Otros'}>Otros</Link>
     </Nav>
-    <CartWidget/>
+    <Link to={'/cart'}><CartWidget/></Link>
     </Container>
   </Navbar>
 </>

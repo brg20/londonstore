@@ -11,7 +11,7 @@ const sumarCantidad = () => {
     (cantidad < stock) ? setCantidad  (parseInt(cantidad ) + 1) : alert("No hay tanto stock disponible");
 }
 const restarCantidad = () => {
-    (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : alert ("Al menos debe haber 1 producto") ;
+    (cantidad >= 2) ? setCantidad (parseInt(cantidad) - 1) : <></> ;
 }
 
 
@@ -22,7 +22,7 @@ const restarCantidad = () => {
                 {cantidad}
                 <Button className="m-2 border border-secondary " variant="inherit" size="sm" onClick={sumarCantidad}>+</Button>
                 <br></br>
-                <Link to="/Cart"><Button className="m-2" variant="secondary" size="sm" onClick={() => onAdd(cantidad)}>Comprar</Button></Link>
+                <Link to="/cart"><Button className="m-2" variant="secondary" size="sm" onClick={() => onAdd(cantidad)}>Agregar al carrito</Button></Link>
             </div>
     
         </> )} ;
