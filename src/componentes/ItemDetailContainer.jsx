@@ -3,18 +3,38 @@ import productos from '../productos/productos' ;
 import {useState, useEffect} from 'react' ;
 import {useParams} from 'react-router-dom' ;
 import { Spinner } from 'react-bootstrap';
+import {getFirestore} from '../firebase/firebase' ;
 
 
 const ItemDetailContainer = () => {
 
-    const [arrayDeProductos, setArrayDeProductos] = useState ([]) ;
-    const [terminolapromesa, setTerminoLaPromesa] = useState (false) ;
-
-    const {id} = useParams() ;
+    const [item, setItem] = useState ([]) ;
+    const {id} = useParams() 
 
     useEffect(() => {
 
-    const promesa = new Promise ((resolve) => 
+        const db = getFirestore () ;
+        const itemColecction = db.collection("producto") ;
+        const miItem = itemColecction.doc(id) ;
+
+
+        miItem.get()
+        .then((doc) =>  {
+            if (!doc.exists) {
+                console.log ("no se encontro el producto");
+                return
+            }
+            console.log ("se encontro el producto") ;
+
+        setItem ( {id: doc.id, ...doc.data()})
+                
+        }
+        )
+        .catch ((err) => {
+            console.log (err) ;
+        })
+
+     /*const promesa = new Promise ((resolve) => 
         {
         setTimeout(() => {
         resolve (productos)
@@ -24,13 +44,14 @@ const ItemDetailContainer = () => {
     promesa.then(res => {
         setArrayDeProductos (res[id]) ; // Mando un producto en concreto
         setTerminoLaPromesa (true) ;
-    })
+    }) */
 }, [])
 
-if (terminolapromesa === true) {
-    return ( <>
-             <ItemDetail producto={arrayDeProductos}/> 
-             </>) }  else  return ( <div className="w-25 mt-2 text-center m-auto"><Spinner animation="border" variant="primary"/></div>);
+
+return ( <>
+    <ItemDetail producto={item}/> 
+    </>)
+    
 } ;
 
 export default ItemDetailContainer ;
