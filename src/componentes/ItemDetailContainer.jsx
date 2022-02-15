@@ -1,5 +1,4 @@
 import ItemDetail from './ItemDetail';
-import productos from '../productos/productos' ;
 import {useState, useEffect} from 'react' ;
 import {useParams} from 'react-router-dom' ;
 import { Spinner } from 'react-bootstrap';
@@ -34,17 +33,7 @@ const ItemDetailContainer = () => {
             console.log (err) ;
         })
 
-     /*const promesa = new Promise ((resolve) => 
-        {
-        setTimeout(() => {
-        resolve (productos)
-        }, 1000);
-}) ;
-
-    promesa.then(res => {
-        setArrayDeProductos (res[id]) ; // Mando un producto en concreto
-        setTerminoLaPromesa (true) ;
-    }) */
+     
 }, [])
 
 

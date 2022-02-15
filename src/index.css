@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.card-body, .navbar {
+.card-body {
   background-color: burlywood;
 }
