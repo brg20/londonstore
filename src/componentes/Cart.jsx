@@ -85,7 +85,7 @@ const Cart = () => {
         <p/>
         <input type="text" name="telefono" ref={telefono} placeholder="ingrese su telefono" />
         <p/>
-        <Button className="bg-primary" onClick={capturarDatos}>Terminar mi compra</Button>
+        <Button  onClick={capturarDatos}>Terminar mi compra</Button>
         </div>
         </>
 

@@ -1,11 +1,13 @@
-
 .slider {
   position: relative;
   height: 86vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  overflow: hidden;
 }
+
 
 .image {
   border-radius: 10px;
@@ -62,7 +64,28 @@
 }
 .navbar-brand{
   font-weight: bold;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.2em;
   font-size: 1.5em;
-  font-family: 'Lucida', serif;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.card{
+  border: 0px;
+}
+.card-body {
+  background-color: transparent;
+  height: auto;
+  position: relative;
+  border-radius: 0px 0px 10px 10px;
+  z-index: 2;
+}
+.card-title{
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.card-title, .card-subtitle, .card-text{
+  margin: 0px 30px;
+  padding: 0 5px;
 }
