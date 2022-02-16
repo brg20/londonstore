@@ -7,7 +7,7 @@ function NavBar ()  {
 
     return ( 
         <>
-  <Navbar className='nav'  variant="dark">
+  <Navbar   variant="dark">
     <Container>
     <Link className="nav-link" to={'/'}>
     <Navbar.Brand>London Store</Navbar.Brand></Link>

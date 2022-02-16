@@ -1,3 +1,4 @@
+
 .slider {
   position: relative;
   height: 86vh;
@@ -54,8 +55,14 @@
   width:100%;
   bottom:0px;
 }
-.nav{
-  background-color: #706fd3;
+.navbar{
+  background-color: #262626;
   height: 60px;
   width: 100%;
+}
+.navbar-brand{
+  font-weight: bold;
+  letter-spacing: 0.5em;
+  font-size: 1.5em;
+  font-family: 'Lucida', serif;
 }
