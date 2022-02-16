@@ -15,3 +15,10 @@ code {
 .card-body {
   background-color: burlywood;
 }
+.slider {
+  width: 100%;
+  height: 80vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}

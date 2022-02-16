@@ -2,11 +2,12 @@ import {Navbar, Container, Nav} from 'react-bootstrap'
 import CartWidget from './CartWidget';
 import {Link} from 'react-router-dom' ;
 
+
 function NavBar ()  {
 
     return ( 
         <>
-  <Navbar bg="primary" variant="dark">
+  <Navbar className='nav'  variant="dark">
     <Container>
     <Link className="nav-link" to={'/'}>
     <Navbar.Brand>London Store</Navbar.Brand></Link>
