@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import firebase from 'firebase';
 import { getFirestore } from '../firebase/firebase';
 
+import { Fade } from "react-awesome-reveal";
 
 const Cart = () => {
 
@@ -37,12 +38,11 @@ const Cart = () => {
         ordenes.add(orden)
        
         .then (({id}) => {
-             console.log (orden) ;
             setOrdenRealizada (id) ;
             setCarrito ([]) ;
         })
         .catch((err) => {
-            console.log (err, "hubo un error")
+            console.warn(err);
         })
     } else { alert ("ingrese todos los campos obligatorios")}
 }
@@ -54,9 +54,28 @@ const Cart = () => {
     {   if (ordenRealizada != undefined) {
       
              return (
-                <>
-                {ordenRealizada && (<div className="p3 w-50 m-auto text-center">Se realizo correctamente el pedido de compra bajo el id: {ordenRealizada}</div> )})
-                </>
+                <Fade>
+                <section className="buy-msg-container">
+                  <p className="buy-msg">
+                    Gracias por confiar en nosotros!
+                    <br />
+                    <br />
+                    Te hemos enviado un correo para continuar
+                    con la compra.
+                    <br />
+                    <br />
+                    Tu número de orden es: <b>{ordenRealizada}.</b>
+                    <br />
+                    <br />
+                    <Link to="/">
+                      <span style={{ color: "#044371", textDecoration: "underline" }}>
+                        Volver al inicio
+                      </span>
+                    </Link>
+                  </p>
+                </section>
+                </Fade>
+            
     )}  else  if (carrito.length !== 0) {
             return (
             <>

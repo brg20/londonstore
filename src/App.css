@@ -89,3 +89,18 @@
   margin: 0px 30px;
   padding: 0 5px;
 }
+
+.buy-msg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.buy-msg {
+  margin-top: 10%;
+  font-size: 1.6rem;
+  width: 50%;
+  border-radius: 12px;
+  padding: 2.5rem;
+  background-color: rgba(211, 212, 209, 0.4);
+}

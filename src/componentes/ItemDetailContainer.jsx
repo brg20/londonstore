@@ -30,7 +30,7 @@ const ItemDetailContainer = () => {
         }
         )
         .catch ((err) => {
-            console.log (err) ;
+            console.warn(err);
         })
 
      
