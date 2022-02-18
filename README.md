@@ -30,5 +30,5 @@ React-router-dom@5.2.0
 react-awesome-reveal@3.8.1
 react-bootstrap@2.1.1
 react-icons@4.3.1
-
+sweetalert2@11.4
 ```

@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom' ;
 import { Button } from 'react-bootstrap';
 import firebase from 'firebase';
 import { getFirestore } from '../firebase/firebase';
-
 import { Fade } from "react-awesome-reveal";
+import BuyMessage from "./BuyMessage";
 
 const Cart = () => {
 
@@ -55,25 +55,7 @@ const Cart = () => {
       
              return (
                 <Fade>
-                <section className="buy-msg-container">
-                  <p className="buy-msg">
-                    Gracias por confiar en nosotros!
-                    <br />
-                    <br />
-                    Te hemos enviado un correo para continuar
-                    con la compra.
-                    <br />
-                    <br />
-                    Tu número de orden es: <b>{ordenRealizada}.</b>
-                    <br />
-                    <br />
-                    <Link to="/">
-                      <span style={{ color: "#044371", textDecoration: "underline" }}>
-                        Volver al inicio
-                      </span>
-                    </Link>
-                  </p>
-                </section>
+                  <BuyMessage ordenRealizada={ordenRealizada} />
                 </Fade>
             
     )}  else  if (carrito.length !== 0) {
